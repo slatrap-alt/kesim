@@ -23,8 +23,6 @@ jobs:
         uses: actions/configure-pages@v5
         with:
           enablement: true
-      - name: Apply supplier payment integration
-        run: python scripts/patch_supplier_payments.py
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
