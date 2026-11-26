@@ -163,10 +163,13 @@
 
 
   <style id="acanlar-delivery-document-v1">
-    .delivery-doc-entry{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:22px;padding:22px 24px;border:1px solid #dfe8f0;border-radius:19px;background:linear-gradient(115deg,#fff,#f2f6fa);box-shadow:0 10px 28px #1c30480a}
-    .doc-entry-kicker{font-size:9px;letter-spacing:1.8px;font-weight:850;color:#7790a8}
-    .delivery-doc-entry h2{margin:5px 0;color:#263d55;font-size:18px;letter-spacing:-.4px}
-    .delivery-doc-entry p{margin:0;color:#8190a1;font-size:11px;line-height:1.7}
+    .delivery-doc-entry{position:relative;display:flex;align-items:center;justify-content:space-between;gap:18px;margin:0 0 20px;padding:25px 27px;border:1px solid #d9c79a;border-radius:20px;background:radial-gradient(circle at 90% 15%,#ffffff80 0 2px,transparent 3px),linear-gradient(112deg,#fff9e9 0%,#f5e8c9 48%,#e9d9b2 100%);box-shadow:0 14px 34px rgba(126,95,39,.16);overflow:hidden}
+    .delivery-doc-entry:after{content:"✦";position:absolute;right:205px;top:-24px;font-size:112px;line-height:1;color:#9c7b3c15;pointer-events:none}
+    .doc-entry-kicker{font-size:9px;letter-spacing:2px;font-weight:900;color:#92743d}
+    .delivery-doc-entry h2{margin:6px 0;color:#4a3a20;font-size:20px;letter-spacing:-.5px}
+    .delivery-doc-entry p{margin:0;color:#756342;font-size:11px;line-height:1.75;max-width:540px}
+    .delivery-doc-entry .doc-open-btn{position:relative;z-index:1;background:linear-gradient(135deg,#243f55,#142c40);box-shadow:0 7px 17px #182f4433;border:1px solid #ffffff55;padding:14px 18px}
+    .delivery-doc-entry .doc-open-btn:hover{transform:translateY(-1px);box-shadow:0 10px 22px #182f4440}
     .doc-open-btn,.doc-primary,.doc-secondary{border:0;border-radius:11px;padding:12px 16px;cursor:pointer;font:700 12px/1.3 inherit}
     .doc-open-btn,.doc-primary{background:#183b59;color:#fff;box-shadow:0 5px 14px #183b5926}
     .doc-open-btn{white-space:nowrap}.doc-open-btn span{margin-left:8px;font-size:17px}
@@ -211,6 +214,7 @@
     <section id="error" class="message" hidden><div class="message-icon">⌁</div><h1 id="errorTitle">Bağlantı açılamadı</h1><p id="errorText">Bu takip bağlantısı geçersiz veya artık aktif değil.</p><button id="retry" class="retry" type="button" hidden>Yeniden dene</button></section>
     <div id="content" hidden>
       <section class="hero"><div class="eyebrow">ACANLAR MOBİLYA DEKORASYON · SİPARİŞİNİZİN YOLCULUĞU</div><h1 id="customerName">Merhaba</h1><p class="hero-welcome">Hayal ettiğiniz yaşam alanı için özenle çalışıyoruz. Siparişinizin güncel durumunu buradan takip edebilirsiniz.</p><p id="jobName" class="hero-job"></p><div class="hero-meta"><span id="jobDate" class="chip" hidden></span><span class="chip">Acanlar Mobilya Dekorasyon</span></div></section>
+      <section class="delivery-doc-entry" id="deliveryDocEntry" hidden><div><div class="doc-entry-kicker">PROJENİZE ÖZEL</div><h2>Dijital teslimat dosyanız hazır</h2><p>Proje özetinizi, paylaşılan fotoğrafları, ödeme bilgilerinizi ve 5 yıl garanti bilgisini inceleyin.</p></div><button type="button" class="doc-open-btn" id="openDeliveryDoc">Teslimat dosyasını görüntüle <span aria-hidden="true">→</span></button></section>
       <section class="status-card"><div class="status-head"><h2>Siparişinin durumu</h2><span id="state" class="state-pill"></span></div><div class="progress"><i id="progressBar"></i></div><div class="steps" id="steps"></div></section>
       <section id="productionStagesCard" class="status-card production-timeline-card" hidden><div class="status-head"><div><div class="stage-eyebrow">ACANLAR MOBİLYA · ÜRETİM SÜRECİ</div><h2>Siparişinizin üretim aşamaları</h2></div><span id="productionStageSummary" class="state-pill"></span></div><div class="progress"><i id="productionStageProgress"></i></div><div id="productionStageList" class="production-stage-list"></div></section>
       <section class="finance-panel surface" id="financePanel" aria-label="Ödeme ve finans özeti">
@@ -224,9 +228,12 @@
         <p class="finance-note" id="financeNote">Bu alan, Acanlar Mobilya tarafından müşteriyle paylaşılmasına izin verilen ödeme özetini gösterir. Ödeme bilgilerinde farklılık görürseniz bizimle iletişime geçebilirsiniz.</p>
       </section>
       <section id="delivery" class="delivery" hidden><span class="delivery-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><span><span>Planlanan teslim tarihi</span><strong id="deliveryDate"></strong></span></section>
-      <section class="delivery-doc-entry" id="deliveryDocEntry" hidden><div><div class="doc-entry-kicker">PROJENİZE ÖZEL</div><h2>Dijital teslimat dosyanız hazır</h2><p>Proje özetinizi, paylaşılan fotoğrafları, ödeme bilgilerinizi ve 5 yıl garanti bilgisini inceleyin.</p></div><button type="button" class="doc-open-btn" id="openDeliveryDoc">Teslimat dosyasını görüntüle <span aria-hidden="true">→</span></button></section>
+      
       <section class="surface photos"><div class="photos-head"><div><h2 class="section-title">Üretimden fotoğraflar</h2><p>İşinin ilerleyişinden paylaşılan görüntüler</p></div><span id="photoCount" class="photo-count"></span></div><div id="gallery" class="gallery"></div></section>
-      <section id="deliveryDocument" class="delivery-document" hidden aria-label="Dijital teslimat dosyası önizlemesi">
+      <div id="updated" class="updated"></div>
+      <p class="footnote">Bu sayfa yalnızca seninle paylaşılmış sipariş özetini gösterir. Başka müşteri dosyalarına veya atölyenin iç kayıtlarına erişim sağlamaz. Soruların için Acanlar Mobilya ile iletişime geçebilirsin.</p>
+    </div>
+          <section id="deliveryDocument" class="delivery-document" hidden aria-label="Dijital teslimat dosyası önizlemesi">
         <div class="doc-toolbar"><div><strong>Proje teslim dosyası</strong><span>PDF önizleme · Acanlar Mobilya</span></div><div class="doc-actions"><button type="button" class="doc-secondary" id="closeDeliveryDoc">Portala dön</button><button type="button" class="doc-primary" id="saveDeliveryPdf"><span aria-hidden="true">↓</span> PDF olarak kaydet</button></div></div>
         <article class="doc-page" id="deliveryDocPage">
           <header class="doc-cover">
@@ -247,9 +254,6 @@
           </div>
         </article>
       </section>
-      <div id="updated" class="updated"></div>
-      <p class="footnote">Bu sayfa yalnızca seninle paylaşılmış sipariş özetini gösterir. Başka müşteri dosyalarına veya atölyenin iç kayıtlarına erişim sağlamaz. Soruların için Acanlar Mobilya ile iletişime geçebilirsin.</p>
-    </div>
   </main>
   <div id="photoViewer" class="photo-viewer" role="dialog" aria-modal="true" aria-label="Fotoğraf görüntüleyici" aria-hidden="true">
     <div class="pv-caption" id="pvCaption"></div><button class="pv-close" id="pvClose" type="button" aria-label="Kapat">×</button>
