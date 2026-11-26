@@ -263,6 +263,14 @@
     .customer-action-note{display:block;margin-top:8px;color:#a0aab7;font-size:9px;line-height:1.5}
     @media(max-width:650px){.customer-actions{grid-template-columns:1fr;gap:12px;margin-top:16px}.customer-action-card{padding:17px;gap:13px;border-radius:16px}.customer-qr-wrap{flex-basis:104px;width:104px;height:104px}.customer-qr-wrap canvas,.customer-qr-wrap img{width:88px!important;height:88px!important}.customer-action-card h2{font-size:14px}.customer-action-card p{font-size:10px}.customer-action-btn{min-height:38px;padding:9px 11px;font-size:10px}}
     @media(max-width:370px){.customer-action-card{align-items:flex-start;flex-direction:column}.customer-qr-wrap{align-self:center}}
+    /* QR kodu yalnızca proje teslim dosyasında gösterilir */
+    .doc-qr-panel{display:flex;align-items:center;gap:15px;margin-top:14px;padding:12px 15px;border:1px solid #dfe8f0;border-radius:11px;background:linear-gradient(110deg,#f7fafe,#eef4f9)}
+    .doc-qr-box{display:grid;place-items:center;flex:0 0 88px;width:88px;height:88px;padding:5px;border:1px solid #e2e9f0;border-radius:9px;background:#fff}
+    #docCustomerQr canvas,#docCustomerQr img{display:block!important;width:76px!important;height:76px!important;max-width:100%}
+    .doc-qr-copy{min-width:0}.doc-qr-copy strong{display:block;color:#29445e;font-size:11px;letter-spacing:.1px}.doc-qr-copy p{margin:4px 0 0;color:#718297;font-size:9px;line-height:1.6}
+    .doc-qr-copy small{display:block;margin-top:5px;color:#8b9aac;font-size:8px}
+    @media(max-width:650px){.doc-qr-panel{gap:12px;padding:11px}.doc-qr-box{flex-basis:82px;width:82px;height:82px}#docCustomerQr canvas,#docCustomerQr img{width:70px!important;height:70px!important}}
+    @media print{.doc-qr-panel{margin-top:10px;padding:8px 11px;gap:11px}.doc-qr-box{flex-basis:76px;width:76px;height:76px;padding:4px}#docCustomerQr canvas,#docCustomerQr img{width:66px!important;height:66px!important}.doc-qr-copy strong{font-size:9px}.doc-qr-copy p{font-size:7px;line-height:1.45}.doc-qr-copy small{font-size:6px}}
   </style>
 
 </head>
@@ -291,21 +299,7 @@
       <section class="surface photos"><div class="photos-head"><div><h2 class="section-title">Üretimden fotoğraflar</h2><p>İşinin ilerleyişinden paylaşılan görüntüler</p></div><span id="photoCount" class="photo-count"></span></div><div id="gallery" class="gallery"></div></section>
 
       <section class="customer-actions" aria-label="Müşteri bağlantıları ve değerlendirme">
-        <article class="customer-action-card">
-          <div class="customer-qr-wrap"><div id="customerQr"><span class="customer-qr-fallback">Kişisel QR kodunuz hazırlanıyor…</span></div></div>
-          <div class="customer-action-copy">
-            <span class="customer-action-kicker">SİZE ÖZEL GÜVENLİ BAĞLANTI</span>
-            <h2>Projenize her zaman kolayca ulaşın</h2>
-            <p>Bu QR kodu telefonunuzla tarayarak size ait müşteri portalını yeniden açabilirsiniz.</p>
-            <div class="customer-action-buttons">
-              <button type="button" class="customer-action-btn" id="copyCustomerLink">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg>
-                Bağlantıyı kopyala
-              </button>
-            </div>
-            <span class="customer-action-note">QR kodunuz yalnızca bu müşteri dosyasına ait takip bağlantısını içerir.</span>
-          </div>
-        </article>
+
         <article class="customer-action-card">
           <div class="customer-action-copy">
             <span class="customer-action-kicker">DENEYİMİNİZ BİZİM İÇİN DEĞERLİ</span>
@@ -342,6 +336,7 @@
             <div class="doc-section-title">Proje ve ödeme özeti</div>
             <div class="doc-info-grid"><div><span>Proje</span><strong id="docJob"></strong></div><div><span>Dosya tarihi</span><strong id="docJobDate"></strong></div><div><span>Toplam proje bedeli</span><strong id="docContract"></strong></div><div><span>Tahsil edilen</span><strong id="docPaid"></strong></div><div><span>Kalan bakiye</span><strong id="docBalance"></strong></div><div><span>Proje durumu</span><strong>Tamamlandı</strong></div></div>
             <div class="doc-warranty"><div class="doc-warranty-icon">✦</div><div><span>ACANLAR MOBİLYA GARANTİ BİLGİSİ</span><strong>5 YIL GARANTİ</strong><p>Garanti süresi, ürünün fiilen müşteriye teslim edildiği tarihte başlar. Garanti kapsamı ve uygulama koşulları, müşteriye verilen garanti şartları doğrultusunda değerlendirilir.</p></div></div>
+            <div class="doc-qr-panel" aria-label="Müşteriye özel takip QR kodu"><div class="doc-qr-box"><div id="docCustomerQr"><span class="customer-qr-fallback">QR hazırlanıyor…</span></div></div><div class="doc-qr-copy"><strong>Proje dosyanıza dilediğiniz zaman yeniden ulaşın</strong><p>Bu QR kodu telefonunuzun kamerasıyla tarayarak size özel müşteri takip sayfanızı tekrar açabilirsiniz.</p><small>Size özel güvenli bağlantı · Acanlar Mobilya</small></div></div>
             <div class="doc-thanks"><strong>Bizi tercih ettiğiniz için teşekkür ederiz.</strong><p>Yaşam alanınıza değer katmak bizim için mutluluk.</p><span>ACANLAR MOBİLYA DEKORASYON</span></div>
             <div class="doc-footer">Bu belge, Acanlar Mobilya müşteri portalında oluşturulan dijital proje teslim özeti niteliğindedir.</div>
           </div>
@@ -374,12 +369,6 @@
     const date=s=>{if(!/^\d{4}-\d{2}-\d{2}$/.test(String(s||'')))return '';return new Date(s+'T12:00:00').toLocaleDateString('tr-TR',{day:'numeric',month:'long',year:'numeric'})};
     const text=(id,value)=>{$(id).textContent=String(value??'')};
     function setupCustomerActions(){
-      const ownUrl=location.href;
-      const qr=$('customerQr');qr.replaceChildren();
-      if(window.QRCode){
-        try{new QRCode(qr,{text:ownUrl,width:196,height:196,colorDark:'#18344f',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M})}
-        catch{qr.append(node('span','customer-qr-fallback','QR kod şu anda oluşturulamadı. Bağlantıyı kopyalayabilirsiniz.'))}
-      }else{qr.append(node('span','customer-qr-fallback','QR kod yüklenemedi. Bağlantıyı kopyalayabilirsiniz.'))}
       const review=$('googleReviewButton');
       if(/^https:\/\//i.test(GOOGLE_REVIEW_URL)){
         review.href=GOOGLE_REVIEW_URL;review.target='_blank';review.rel='noopener noreferrer';
@@ -388,12 +377,13 @@
       }else{
         review.addEventListener('click',ev=>ev.preventDefault());
       }
-      $('copyCustomerLink').addEventListener('click',async()=>{
-        const btn=$('copyCustomerLink'),original='Bağlantıyı kopyala';
-        try{await navigator.clipboard.writeText(ownUrl);btn.textContent='✓ Bağlantı kopyalandı';}
-        catch{btn.textContent='Kopyalama desteklenmiyor';}
-        window.setTimeout(()=>{btn.textContent=original},2200);
-      });
+    }
+    function setupDeliveryDocumentQr(){
+      const qr=$('docCustomerQr');if(!qr)return;qr.replaceChildren();
+      if(window.QRCode){
+        try{new QRCode(qr,{text:location.href,width:152,height:152,colorDark:'#18344f',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M})}
+        catch{qr.append(node('span','customer-qr-fallback','QR kod oluşturulamadı.'))}
+      }else{qr.append(node('span','customer-qr-fallback','QR kod yüklenemedi.'))}
     }
     function showError(title,description,canRetry=false){$('loading').hidden=true;$('content').hidden=true;$('error').hidden=false;text('errorTitle',title);text('errorText',description);$('retry').hidden=!canRetry}
     function node(tag,cls,content){const el=document.createElement(tag);if(cls)el.className=cls;if(content!==undefined)el.textContent=content;return el}
@@ -464,6 +454,7 @@
       text('docContract',money(data.contract));
       text('docPaid',money(data.paid));
       text('docBalance',money(data.balance));
+      setupDeliveryDocumentQr();
       const root=$('docCoverPhoto');root.replaceChildren();
       const validPhoto=p=>p&&typeof p.url==='string'&&(()=>{try{const u=new URL(p.url);return u.protocol==='https:'&&u.hostname===projectHost}catch{return false}})();
       const photos=Array.isArray(data.photos)?data.photos.filter(validPhoto):[];
