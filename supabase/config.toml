@@ -1,1 +1,4 @@
 project_id = "wfzcrginziwmvansqshd"
+
+[remotes.production]
+project_id = "wfzcrginziwmvansqshd"
