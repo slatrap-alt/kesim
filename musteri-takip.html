@@ -29,6 +29,40 @@
     .photo a{cursor:zoom-in}.photo img{transition:transform .2s ease}.photo a:hover img{transform:scale(1.025)}
     @media(max-width:650px){.photo-viewer{padding:68px 8px 92px}.pv-close{right:12px;top:12px;width:42px;height:42px}.pv-nav{width:40px;height:48px;font-size:25px}.pv-prev{left:7px}.pv-next{right:7px}.pv-caption{top:23px;max-width:55vw;font-size:11px}.pv-toolbar{bottom:15px}}
     @media(prefers-reduced-motion:reduce){.pv-image,.photo img{transition:none}}
+    /* Premium müşteri deneyimi */
+    main{max-width:960px;margin-top:30px}
+    .hero{padding:38px 38px 32px;border-radius:26px;background:radial-gradient(circle at 88% 10%,#ffffff20 0 2px,transparent 3px),linear-gradient(118deg,#142b40 0%,#244c6d 58%,#52799a 100%);box-shadow:0 22px 55px #17304a24}
+    .hero .eyebrow{font-size:10px;letter-spacing:2.1px;color:#d0deeb}
+    .hero h1{font-size:clamp(30px,5vw,42px);letter-spacing:-1.5px;margin:15px 0 10px}
+    .hero-welcome{max-width:650px;font-size:14px!important;line-height:1.85!important;color:#e4edf5!important;margin:0!important}
+    .hero-job{display:inline-flex;margin-top:16px!important;padding:8px 12px;border:1px solid #ffffff30;border-radius:10px;background:#ffffff12;color:#fff!important;font-size:12px!important}
+    .hero-meta{margin-top:16px}
+    .status-card,.surface,.metric,.delivery{border-radius:19px;box-shadow:0 12px 34px #2539560a}
+    .status-card{padding:26px 28px}
+    .status-head h2,.section-title{font-size:18px;letter-spacing:-.45px}
+    .stage-eyebrow{font-size:9px;letter-spacing:1.65px;font-weight:800;color:#7d91a8;margin-bottom:5px}
+    .production-timeline-card{padding:26px 28px}
+    .production-timeline-card .status-head{align-items:flex-start}
+    .production-timeline-card .status-head h2{font-size:19px;color:#263b53}
+    .production-stage-list{display:grid;gap:0;margin-top:4px}
+    .production-stage-item{display:grid;grid-template-columns:36px minmax(0,1fr);gap:13px;position:relative;padding:0 0 20px}
+    .production-stage-item:not(:last-child):before{content:"";position:absolute;left:16px;top:34px;bottom:-1px;width:2px;background:#e7edf3}
+    .production-stage-dot{position:relative;z-index:1;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#f2f5f8;border:1px solid #dce4ed;color:#8b99aa;font-size:12px;font-weight:800}
+    .production-stage-item.done .production-stage-dot{background:#eaf5ef;border-color:#cce6d8;color:#34866b}
+    .production-stage-item.active .production-stage-dot{background:#eaf1f9;border:2px solid #7194b8;color:#315e91;box-shadow:0 0 0 5px #edf3f9}
+    .production-stage-copy{padding-top:2px;min-width:0}
+    .production-stage-copy strong{display:block;font-size:13px;color:#34465c;line-height:1.5}
+    .production-stage-copy p{margin:4px 0 0;font-size:11px;line-height:1.75;color:#8491a2}
+    .production-stage-item.active .production-stage-copy strong{color:#315e91}
+    .production-stage-status{display:inline-flex;margin-top:7px;padding:4px 8px;border-radius:7px;background:#f0f3f7;color:#748397;font-size:9px;font-weight:750}
+    .production-stage-item.done .production-stage-status{background:#eaf5ef;color:#34866b}
+    .production-stage-item.active .production-stage-status{background:#eaf1f9;color:#315e91}
+    .photos{padding:26px}
+    .photos-head p{font-size:12px;line-height:1.7}
+    .photo{border-radius:14px}
+    .photo img{height:205px}
+    .footnote{font-size:10px;line-height:1.9}
+    @media(max-width:650px){main{margin-top:20px}.hero{padding:29px 22px;border-radius:20px}.hero h1{font-size:30px}.hero-welcome{font-size:12px!important}.status-card,.production-timeline-card{padding:20px 17px}.production-timeline-card .status-head h2{font-size:16px}.production-stage-item{gap:10px;padding-bottom:17px}.production-stage-copy strong{font-size:12px}.production-stage-copy p{font-size:10px}.photos{padding:19px 16px}.photo img{height:145px}}
   </style>
 
   <style id="acanlar-brand-logo-refresh">
@@ -45,8 +79,9 @@
     <section id="loading" class="message"><div class="message-icon">…</div><h1>Sipariş bilgilerin getiriliyor</h1><p>Güvenli bağlantı kontrol ediliyor.</p></section>
     <section id="error" class="message" hidden><div class="message-icon">⌁</div><h1 id="errorTitle">Bağlantı açılamadı</h1><p id="errorText">Bu takip bağlantısı geçersiz veya artık aktif değil.</p><button id="retry" class="retry" type="button" hidden>Yeniden dene</button></section>
     <div id="content" hidden>
-      <section class="hero"><div class="eyebrow">SİPARİŞ TAKİP MERKEZİ</div><h1 id="customerName">Merhaba</h1><p id="jobName"></p><div class="hero-meta"><span id="jobDate" class="chip" hidden></span><span class="chip">Acanlar Mobilya Dekorasyon</span></div></section>
+      <section class="hero"><div class="eyebrow">ACANLAR MOBİLYA DEKORASYON · SİPARİŞİNİZİN YOLCULUĞU</div><h1 id="customerName">Merhaba</h1><p class="hero-welcome">Hayal ettiğiniz yaşam alanı için özenle çalışıyoruz. Siparişinizin güncel durumunu buradan takip edebilirsiniz.</p><p id="jobName" class="hero-job"></p><div class="hero-meta"><span id="jobDate" class="chip" hidden></span><span class="chip">Acanlar Mobilya Dekorasyon</span></div></section>
       <section class="status-card"><div class="status-head"><h2>Siparişinin durumu</h2><span id="state" class="state-pill"></span></div><div class="progress"><i id="progressBar"></i></div><div class="steps" id="steps"></div></section>
+      <section id="productionStagesCard" class="status-card production-timeline-card" hidden><div class="status-head"><div><div class="stage-eyebrow">ACANLAR MOBİLYA · ÜRETİM SÜRECİ</div><h2>Siparişinizin üretim aşamaları</h2></div><span id="productionStageSummary" class="state-pill"></span></div><div class="progress"><i id="productionStageProgress"></i></div><div id="productionStageList" class="production-stage-list"></div></section>
       <section class="metrics" id="metrics"></section>
       <section id="delivery" class="delivery" hidden><span class="delivery-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><span><span>Planlanan teslim tarihi</span><strong id="deliveryDate"></strong></span></section>
       <section class="surface photos"><div class="photos-head"><div><h2 class="section-title">Üretimden fotoğraflar</h2><p>İşinin ilerleyişinden paylaşılan görüntüler</p></div><span id="photoCount" class="photo-count"></span></div><div id="gallery" class="gallery"></div></section>
@@ -79,6 +114,18 @@
     function showError(title,description,canRetry=false){$('loading').hidden=true;$('content').hidden=true;$('error').hidden=false;text('errorTitle',title);text('errorText',description);$('retry').hidden=!canRetry}
     function node(tag,cls,content){const el=document.createElement(tag);if(cls)el.className=cls;if(content!==undefined)el.textContent=content;return el}
     function addMetric(container,label,value,cls){const el=node('div','metric '+(cls||''));el.append(node('span','',label),node('strong','',value));container.append(el)}
+    function renderProductionStages(stages){
+      const card=$('productionStagesCard'),fallback=$('steps').closest('.status-card');
+      const valid=Array.isArray(stages)?stages.filter(x=>x&&typeof x==='object'&&String(x.title||'').trim()):[];
+      if(!valid.length){card.hidden=true;fallback.hidden=false;return}
+      fallback.hidden=true;card.hidden=false;
+      const done=valid.filter(x=>x.status==='done').length,active=valid.findIndex(x=>x.status==='active'),pct=Math.round(done/valid.length*100);
+      $('productionStageProgress').style.width=pct+'%';
+      const summary=active>=0?'Üretim devam ediyor':done===valid.length?'Tüm aşamalar tamamlandı':done+' / '+valid.length+' aşama tamamlandı';
+      text('productionStageSummary',summary);$('productionStageSummary').className='state-pill'+(done===valid.length?' complete':'');
+      const root=$('productionStageList');root.replaceChildren();
+      valid.forEach((stage,i)=>{const status=['done','active','pending'].includes(stage.status)?stage.status:'pending',label=status==='done'?'Tamamlandı':status==='active'?'Devam ediyor':'Bekliyor';const item=node('article','production-stage-item '+status),dot=node('span','production-stage-dot',status==='done'?'✓':String(i+1)),copy=node('div','production-stage-copy');copy.append(node('strong','',stage.title),node('p','',stage.description||''),node('span','production-stage-status',label));item.append(dot,copy);root.append(item)});
+    }
     function render(data){
       if(!data||typeof data!=='object'||!data.customerName||data.version!==1)throw new Error('Sipariş bilgisi doğrulanamadı.');
       text('customerName','Merhaba, '+data.customerName);
@@ -92,6 +139,7 @@
       const steps=[['Teklif',0],['Üretimde',1],['Tamamlandı',2]],active=state==='Tamamlandı'?2:state==='Üretimde'?1:0;
       const stepsRoot=$('steps');stepsRoot.replaceChildren();
       steps.forEach(([label,index])=>{const el=node('div','step'+(index<active?' done':index===active?' current':''));const dot=node('span','step-dot',index<active?'✓':String(index+1));el.append(dot,node('span','',label));stepsRoot.append(el)});
+      renderProductionStages(data.productionStages);
       const metrics=$('metrics');metrics.replaceChildren();
       if(data.isOffer){addMetric(metrics,'Teklif bedeli',money(data.contract),'');}
       else{addMetric(metrics,'Toplam iş bedeli',money(data.contract),'');addMetric(metrics,'Ödenen tutar',money(data.paid),'paid');addMetric(metrics,'Kalan bakiye',money(data.balance),'balance')}
