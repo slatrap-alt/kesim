@@ -427,15 +427,23 @@
     function addMetric(container,label,value,cls){const el=node('div','metric '+(cls||''));el.append(node('span','',label),node('strong','',value));container.append(el)}
     function renderProductionStages(stages){
       const card=$('productionStagesCard'),fallback=$('steps').closest('.status-card');
+      const defaults=[
+        {title:'Sipariş alındı',description:'Siparişiniz oluşturuldu. Sürecin her adımında sizi bilgilendireceğiz.',status:'done'},
+        {title:'Ölçü ve proje hazırlığı',description:'Ölçüler ve tasarım onaylandı.',status:'done'},
+        {title:'Malzeme ve kesim',description:'Parçalar hazırlanıyor.',status:'done'},
+        {title:'Üretim ve montaj hazırlığı',description:'Üretim çalışmalarımız devam ediyor.',status:'active'},
+        {title:'Teslimat ve montaj',description:'Ürününüzün teslimat ve montaj planlaması yapılacak.',status:'pending'}
+      ];
       const valid=Array.isArray(stages)?stages.filter(x=>x&&typeof x==='object'&&String(x.title||'').trim()):[];
-      if(!valid.length){card.hidden=true;fallback.hidden=false;return}
-      fallback.hidden=true;card.hidden=false;
-      const done=valid.filter(x=>x.status==='done').length,active=valid.findIndex(x=>x.status==='active'),pct=Math.round(done/valid.length*100);
+      const visibleStages=valid.length?valid:defaults;
+      fallback.hidden=true;
+      card.hidden=false;
+      const done=visibleStages.filter(x=>x.status==='done').length,active=visibleStages.findIndex(x=>x.status==='active'),pct=Math.round(done/visibleStages.length*100);
       $('productionStageProgress').style.width=pct+'%';
-      const summary=active>=0?'Üretim devam ediyor':done===valid.length?'Tüm aşamalar tamamlandı':done+' / '+valid.length+' aşama tamamlandı';
-      text('productionStageSummary',summary);$('productionStageSummary').className='state-pill'+(done===valid.length?' complete':'');
+      const summary=active>=0?'Üretim devam ediyor':done===visibleStages.length?'Tüm aşamalar tamamlandı':done+' / '+visibleStages.length+' aşama tamamlandı';
+      text('productionStageSummary',summary);$('productionStageSummary').className='state-pill'+(done===visibleStages.length?' complete':'');
       const root=$('productionStageList');root.replaceChildren();
-      valid.forEach((stage,i)=>{const status=['done','active','pending'].includes(stage.status)?stage.status:'pending',label=status==='done'?'Tamamlandı':status==='active'?'Devam ediyor':'Bekliyor';const item=node('article','production-stage-item '+status),dot=node('span','production-stage-dot',status==='done'?'✓':String(i+1)),copy=node('div','production-stage-copy');copy.append(node('strong','',stage.title),node('p','',stage.description||''),node('span','production-stage-status',label));item.append(dot,copy);root.append(item)});
+      visibleStages.forEach((stage,i)=>{const status=['done','active','pending'].includes(stage.status)?stage.status:'pending',label=status==='done'?'Tamamlandı':status==='active'?'Devam ediyor':'Bekliyor';const item=node('article','production-stage-item '+status),dot=node('span','production-stage-dot',status==='done'?'✓':String(i+1)),copy=node('div','production-stage-copy');copy.append(node('strong','',stage.title),node('p','',stage.description||''),node('span','production-stage-status',label));item.append(dot,copy);root.append(item)});
     }
     function render(data){
       if(!data||typeof data!=='object'||!data.customerName||data.version!==1)throw new Error('Sipariş bilgisi doğrulanamadı.');
